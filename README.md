@@ -1,4 +1,4 @@
-# Base Rails
+# JZ's Coffee Tracker
 
 ## Standard Workflow
 
