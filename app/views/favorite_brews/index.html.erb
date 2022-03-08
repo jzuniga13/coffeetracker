@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all favorite brews
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new favorite brew
+    </h2>
+
+    <form action="/insert_favorite_brew" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="brew_id_box">
+          Brew
+        </label>
+
+        <input type="text" id="brew_id_box" name="query_brew_id">
+      </div>
+
+      <button>
+        Create favorite brew
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Brew
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_favorite_brews.each do |a_favorite_brew| %>
+      <tr>
+        <td>
+          <%= a_favorite_brew.id %>
+        </td>
+
+        <td>
+          <%= a_favorite_brew.user_id %>
+        </td>
+
+        <td>
+          <%= a_favorite_brew.brew_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_favorite_brew.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_favorite_brew.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/favorite_brews/<%= a_favorite_brew.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

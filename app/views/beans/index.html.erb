@@ -1,0 +1,166 @@
+<div>
+  <div>
+    <h1>
+      List of all beans
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new bean
+    </h2>
+
+    <form action="/insert_bean" method="post">
+      <div>
+        <label for="roaster_id_box">
+          Roaster
+        </label>
+
+        <input type="text" id="roaster_id_box" name="query_roaster_id">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="country_of_origin_box">
+          Country of origin
+        </label>
+
+        <input type="text" id="country_of_origin_box" name="query_country_of_origin">
+      </div>
+
+      <div>
+        <label for="roast_date_box">
+          Roast date
+        </label>
+
+        <input type="datetime-local" id="roast_date_box" name="query_roast_date">
+      </div>
+
+      <div>
+        <label for="process_box">
+          Process
+        </label>
+
+        <input type="text" id="process_box" name="query_process">
+      </div>
+
+      <div>
+        <label for="roast_level_box">
+          Roast level
+        </label>
+
+        <input type="text" id="roast_level_box" name="query_roast_level">
+      </div>
+
+      <button>
+        Create bean
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Roaster
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Country of origin
+        </th>
+
+        <th>
+          Roast date
+        </th>
+
+        <th>
+          Process
+        </th>
+
+        <th>
+          Roast level
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_beans.each do |a_bean| %>
+      <tr>
+        <td>
+          <%= a_bean.id %>
+        </td>
+
+        <td>
+          <%= a_bean.roaster_id %>
+        </td>
+
+        <td>
+          <%= a_bean.name %>
+        </td>
+
+        <td>
+          <%= a_bean.country_of_origin %>
+        </td>
+
+        <td>
+          <%= a_bean.roast_date %>
+        </td>
+
+        <td>
+          <%= a_bean.process %>
+        </td>
+
+        <td>
+          <%= a_bean.roast_level %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_bean.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_bean.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/beans/<%= a_bean.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Favorite brew #<%= @the_favorite_brew.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/favorite_brews">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_favorite_brew/<%= @the_favorite_brew.id %>">
+          Delete favorite brew
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_favorite_brew.user_id %>
+      </dd>
+
+      <dt>
+        Brew
+      </dt>
+      <dd>
+        <%= @the_favorite_brew.brew_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_favorite_brew.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_favorite_brew.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit favorite brew
+    </h2>
+
+    <form action="/modify_favorite_brew/<%= @the_favorite_brew.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_favorite_brew.user_id %>">
+      </div>
+
+      <div>
+        <label for="brew_id_box">
+          Brew
+        </label>
+
+        <input type="text" id="brew_id_box" name="query_brew_id" value="<%= @the_favorite_brew.brew_id %>">
+      </div>
+
+      <button>
+        Update favorite brew
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

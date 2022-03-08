@@ -1,0 +1,147 @@
+<div>
+  <div>
+    <h1>
+      Bean #<%= @the_bean.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/beans">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_bean/<%= @the_bean.id %>">
+          Delete bean
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Roaster
+      </dt>
+      <dd>
+        <%= @the_bean.roaster_id %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_bean.name %>
+      </dd>
+
+      <dt>
+        Country of origin
+      </dt>
+      <dd>
+        <%= @the_bean.country_of_origin %>
+      </dd>
+
+      <dt>
+        Roast date
+      </dt>
+      <dd>
+        <%= @the_bean.roast_date %>
+      </dd>
+
+      <dt>
+        Process
+      </dt>
+      <dd>
+        <%= @the_bean.process %>
+      </dd>
+
+      <dt>
+        Roast level
+      </dt>
+      <dd>
+        <%= @the_bean.roast_level %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bean.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bean.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit bean
+    </h2>
+
+    <form action="/modify_bean/<%= @the_bean.id %>"  method="post" >
+      <div>
+        <label for="roaster_id_box">
+          Roaster
+        </label>
+
+        <input type="text" id="roaster_id_box" name="query_roaster_id" value="<%= @the_bean.roaster_id %>">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_bean.name %>">
+      </div>
+
+      <div>
+        <label for="country_of_origin_box">
+          Country of origin
+        </label>
+
+        <input type="text" id="country_of_origin_box" name="query_country_of_origin" value="<%= @the_bean.country_of_origin %>">
+      </div>
+
+      <div>
+        <label for="roast_date_box">
+          Roast date
+        </label>
+
+        <input type="datetime-local" id="roast_date_box" name="query_roast_date"
+         value="<%= @the_bean.roast_date %>">
+      </div>
+
+      <div>
+        <label for="process_box">
+          Process
+        </label>
+
+        <input type="text" id="process_box" name="query_process" value="<%= @the_bean.process %>">
+      </div>
+
+      <div>
+        <label for="roast_level_box">
+          Roast level
+        </label>
+
+        <input type="text" id="roast_level_box" name="query_roast_level" value="<%= @the_bean.roast_level %>">
+      </div>
+
+      <button>
+        Update bean
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

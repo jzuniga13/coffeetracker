@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      List of all devices
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new device
+    </h2>
+
+    <form action="/insert_device" method="post">
+      <div>
+        <label for="device_box">
+          Device
+        </label>
+
+        <input type="text" id="device_box" name="query_device">
+      </div>
+
+      <button>
+        Create device
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Device
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_devices.each do |a_device| %>
+      <tr>
+        <td>
+          <%= a_device.id %>
+        </td>
+
+        <td>
+          <%= a_device.device %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_device.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_device.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/devices/<%= a_device.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

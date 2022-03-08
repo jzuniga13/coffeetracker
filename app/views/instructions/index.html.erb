@@ -1,0 +1,310 @@
+<div>
+  <div>
+    <h1>
+      List of all instructions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new instruction
+    </h2>
+
+    <form action="/insert_instruction" method="post">
+      <div>
+        <label for="step_1_action_box">
+          Step 1 action
+        </label>
+
+        <input type="text" id="step_1_action_box" name="query_step_1_action">
+      </div>
+
+      <div>
+        <label for="step_1_weight_box">
+          Step 1 weight
+        </label>
+
+        <input type="text" id="step_1_weight_box" name="query_step_1_weight">
+      </div>
+
+      <div>
+        <label for="step_1_time_box">
+          Step 1 time
+        </label>
+
+        <input type="text" id="step_1_time_box" name="query_step_1_time">
+      </div>
+
+      <div>
+        <label for="step_2_action_box">
+          Step 2 action
+        </label>
+
+        <input type="text" id="step_2_action_box" name="query_step_2_action">
+      </div>
+
+      <div>
+        <label for="step_2_weight_box">
+          Step 2 weight
+        </label>
+
+        <input type="text" id="step_2_weight_box" name="query_step_2_weight">
+      </div>
+
+      <div>
+        <label for="step_2_time_box">
+          Step 2 time
+        </label>
+
+        <input type="text" id="step_2_time_box" name="query_step_2_time">
+      </div>
+
+      <div>
+        <label for="step_3_action_box">
+          Step 3 action
+        </label>
+
+        <input type="text" id="step_3_action_box" name="query_step_3_action">
+      </div>
+
+      <div>
+        <label for="step_3_weight_box">
+          Step 3 weight
+        </label>
+
+        <input type="text" id="step_3_weight_box" name="query_step_3_weight">
+      </div>
+
+      <div>
+        <label for="step_3_time_box">
+          Step 3 time
+        </label>
+
+        <input type="text" id="step_3_time_box" name="query_step_3_time">
+      </div>
+
+      <div>
+        <label for="step_4_action_box">
+          Step 4 action
+        </label>
+
+        <input type="text" id="step_4_action_box" name="query_step_4_action">
+      </div>
+
+      <div>
+        <label for="step_4_weight_box">
+          Step 4 weight
+        </label>
+
+        <input type="text" id="step_4_weight_box" name="query_step_4_weight">
+      </div>
+
+      <div>
+        <label for="step_4_time_box">
+          Step 4 time
+        </label>
+
+        <input type="text" id="step_4_time_box" name="query_step_4_time">
+      </div>
+
+      <div>
+        <label for="step_5_action_box">
+          Step 5 action
+        </label>
+
+        <input type="text" id="step_5_action_box" name="query_step_5_action">
+      </div>
+
+      <div>
+        <label for="step_5_weight_box">
+          Step 5 weight
+        </label>
+
+        <input type="text" id="step_5_weight_box" name="query_step_5_weight">
+      </div>
+
+      <div>
+        <label for="step_5_time_box">
+          Step 5 time
+        </label>
+
+        <input type="text" id="step_5_time_box" name="query_step_5_time">
+      </div>
+
+      <button>
+        Create instruction
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Step 1 action
+        </th>
+
+        <th>
+          Step 1 weight
+        </th>
+
+        <th>
+          Step 1 time
+        </th>
+
+        <th>
+          Step 2 action
+        </th>
+
+        <th>
+          Step 2 weight
+        </th>
+
+        <th>
+          Step 2 time
+        </th>
+
+        <th>
+          Step 3 action
+        </th>
+
+        <th>
+          Step 3 weight
+        </th>
+
+        <th>
+          Step 3 time
+        </th>
+
+        <th>
+          Step 4 action
+        </th>
+
+        <th>
+          Step 4 weight
+        </th>
+
+        <th>
+          Step 4 time
+        </th>
+
+        <th>
+          Step 5 action
+        </th>
+
+        <th>
+          Step 5 weight
+        </th>
+
+        <th>
+          Step 5 time
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_instructions.each do |an_instruction| %>
+      <tr>
+        <td>
+          <%= an_instruction.id %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_1_action %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_1_weight %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_1_time %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_2_action %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_2_weight %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_2_time %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_3_action %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_3_weight %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_3_time %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_4_action %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_4_weight %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_4_time %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_5_action %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_5_weight %>
+        </td>
+
+        <td>
+          <%= an_instruction.step_5_time %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_instruction.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_instruction.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/instructions/<%= an_instruction.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
