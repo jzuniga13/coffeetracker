@@ -16,21 +16,11 @@
             Contents
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/brews" class="dropdown-item">
-              Brews
-            </a>
-            <a href="/favorite_brews" class="dropdown-item">
-              Favorite Brews
-            </a>
-            <a href="/devices" class="dropdown-item">
-              Devices
-            </a>
-            <a href="/roasters" class="dropdown-item">
-              Roasters
-            </a>
-            <a href="/beans" class="dropdown-item">
-              Beans
-            </a>
+            <a href="/favorite_brews" class="dropdown-item">Favorite Brews</a>            
+            <a href="/brews" class="dropdown-item">All Brews</a>            
+            <a href="/beans" class="dropdown-item">Beans</a>
+            <a href="/roasters" class="dropdown-item">Roasters</a>
+            <a href="/devices" class="dropdown-item">Devices</a>
           </div>
         </li>
       </ul>
@@ -39,6 +29,7 @@
     <% if @current_user == nil %>
       <div>
         <a href="/user_sign_up">Sign Up</a>
+        <span class="text-white"> | </span>
         <a href="/user_sign_in">Sign In</a>
       </div>
     <% else %>

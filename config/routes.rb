@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   # Routes for the Favorite brew resource:
 
   # CREATE
-  post("/insert_favorite_brew", { :controller => "favorite_brews", :action => "create" })
+  get("/insert_favorite_brew/:path_id", { :controller => "favorite_brews", :action => "create" })
           
   # READ
   get("/favorite_brews", { :controller => "favorite_brews", :action => "index" })

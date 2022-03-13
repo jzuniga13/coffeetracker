@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Device < ApplicationRecord
+  validates :device, :presence => true
   validates :device, :uniqueness => { :case_sensitive => false }
   has_many(:brews, { :dependent => :destroy })
 end

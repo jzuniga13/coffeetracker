@@ -6,40 +6,13 @@
 
     <div>
       <div>
-        <a href="/roasters">
-          Go back
-        </a>
+        <button type="button" class="btn btn-link"><a href="/roasters">Go back</a></button>
       </div>
 
       <div>
-        <a href="/delete_roaster/<%= @the_roaster.id %>">
-          Delete roaster
-        </a>
+        <button type="button" class="btn btn-link"><a href="/delete_roaster/<%= @the_roaster.id %>">Delete roaster</a></button>
       </div>
     </div>
-
-    <dl>
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_roaster.name %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_roaster.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_roaster.updated_at) %> ago
-      </dd>
-    </dl>
   </div>
 </div>
 
@@ -48,10 +21,6 @@
 
 <div>
   <div>
-    <h2>
-      Edit roaster
-    </h2>
-
     <form action="/modify_roaster/<%= @the_roaster.id %>"  method="post" >
       <div>
         <label for="name_box">
@@ -61,11 +30,41 @@
         <input type="text" id="name_box" name="query_name" value="<%= @the_roaster.name %>">
       </div>
 
-      <button>
-        Update roaster
+      <button class="btn btn-primary">
+        Update name
       </button>
     </form>
   </div>
 </div>
 
 <hr>
+<h3>Beans from this roaster</h3>
+<div>
+    <table class="table">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Roaster</th>
+
+          <th>Bean Name</th>
+
+          <th>Roast Date</th>
+
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @the_roaster.beans.each do |a_bean| %>
+        <tr>
+          <td><%= @the_roaster.name %></td>
+
+          <td><%= a_bean.name %></td>
+
+          <td><%= a_bean.roast_date.strftime("%m/%d/%Y") %></td>
+
+          <td><a href="/beans/<%= a_bean.id %>">Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

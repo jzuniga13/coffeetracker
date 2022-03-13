@@ -13,6 +13,7 @@
 #  roaster_id        :integer
 #
 class Bean < ApplicationRecord
+  validates :name, :presence => true
   belongs_to(:roaster)
   has_many(:brews, { :dependent => :destroy })
 end

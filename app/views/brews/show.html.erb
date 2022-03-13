@@ -6,15 +6,24 @@
 
     <div>
       <div>
-        <a href="/brews">
-          Go back
-        </a>
+        <button type="button" class="btn btn-link"><a href="/brews">Go back</a></button>
       </div>
+  
+      <% current_user_favorites = FavoriteBrew.where({:brew_id => @the_brew.id, :user_id => @current_user.id}) %>
+      <% the_favorite = current_user_favorites.first %>
+
+      <% if the_favorite == nil %>
+        <div>
+          <button type="button" class="btn btn-link"><a href="/insert_favorite_brew/<%= @the_brew.id %>">Add to Favorites</a></button>
+        </div>
+      <% else %>
+        <div>
+          <button type="button" class="btn btn-link"><a href="/delete_favorite_brew/<%= the_favorite.id %>">Delete Favorite</a></button>
+        </div>
+      <% end %>
 
       <div>
-        <a href="/delete_brew/<%= @the_brew.id %>">
-          Delete brew
-        </a>
+        <button type="button" class="btn btn-link"><a href="/delete_brew/<%= @the_brew.id %>">Delete brew</a></button>
       </div>
     </div>
   </div>
@@ -29,7 +38,8 @@
     <li class="list-group-item"><span class="font-weight-bolder">Bean </span><%=@the_brew.bean.name%></li>
     <li class="list-group-item"><span class="font-weight-bolder">Roaster </span><%=@the_brew.bean.roaster.name%></li>
     <li class="list-group-item"><span class="font-weight-bolder">Grinder (setting) </span><%=@the_brew.grinder + " (" + @the_brew.grind_setting.to_s + ")" %></li>
-    <li class="list-group-item"><span class="font-weight-bolder">Water Temp </span><%=@the_brew.water_temp%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Coffee Weight (g) </span><%=@the_brew.coffee_weight%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Water Temp (C) </span><%=@the_brew.water_temp%></li>
     <li class="list-group-item"><span class="font-weight-bolder">Flavor Notes </span><%=@the_brew.flavors%></li>
     <li class="list-group-item"><span class="font-weight-bolder">Comments </span><%=@the_brew.comments%></li>
   </ul>

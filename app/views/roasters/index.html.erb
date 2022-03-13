@@ -23,8 +23,8 @@
         <input type="text" id="name_box" name="query_name">
       </div>
 
-      <button>
-        Create roaster
+      <button class="btn btn-primary">
+        Add roaster
       </button>
     </form>
   </div>
@@ -33,52 +33,27 @@
 <hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
+    <table class="table">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Roaster</th>
 
-        <th>
-          Name
-        </th>
+          <th class="text-center">Number of Beans</th>
 
-        <th>
-          Created at
-        </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list_of_roasters.each do |a_roaster| %>
+        <tr>
+          <td><%= a_roaster.name %></td>
 
-        <th>
-          Updated at
-        </th>
+          <td class="text-center"><%=a_roaster.beans.count%></td>
 
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_roasters.each do |a_roaster| %>
-      <tr>
-        <td>
-          <%= a_roaster.id %>
-        </td>
-
-        <td>
-          <%= a_roaster.name %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_roaster.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_roaster.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/roasters/<%= a_roaster.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+          <td><a href="/roasters/<%= a_roaster.id %>">Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

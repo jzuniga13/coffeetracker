@@ -1,6 +1,8 @@
 class BrewsController < ApplicationController
+  before_action(:force_user_sign_in)
+
   def index
-    matching_brews = Brew.all
+    matching_brews = Brew.where(:user_id => @current_user.id)
 
     @list_of_brews = matching_brews.order({ :created_at => :desc })
 
@@ -42,6 +44,7 @@ class BrewsController < ApplicationController
     the_brew.device_id = Device.where({:device => params.fetch("query_device_name")}).first.id
     the_brew.grind_setting = params.fetch("query_grind_setting")
     the_brew.grinder = params.fetch("query_grinder")
+    the_brew.coffee_weight = params.fetch("query_coffee_weight")
     the_brew.water_temp = params.fetch("query_water_temp")
 
     if the_brew.valid?

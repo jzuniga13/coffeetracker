@@ -1,6 +1,10 @@
 class FavoriteBrewsController < ApplicationController
+  before_action(:force_user_sign_in)
+  
   def index
-    matching_favorite_brews = FavoriteBrew.all
+    
+
+    matching_favorite_brews = FavoriteBrew.where(:user_id => @current_user.id)
 
     @list_of_favorite_brews = matching_favorite_brews.order({ :created_at => :desc })
 
@@ -19,14 +23,14 @@ class FavoriteBrewsController < ApplicationController
 
   def create
     the_favorite_brew = FavoriteBrew.new
-    the_favorite_brew.user_id = params.fetch("query_user_id")
-    the_favorite_brew.brew_id = params.fetch("query_brew_id")
+    the_favorite_brew.user_id = @current_user.id
+    the_favorite_brew.brew_id = params.fetch("path_id")
 
     if the_favorite_brew.valid?
       the_favorite_brew.save
-      redirect_to("/favorite_brews", { :notice => "Favorite brew created successfully." })
+      redirect_to("/favorite_brews", { :notice => "Added to your favorites!" })
     else
-      redirect_to("/favorite_brews", { :notice => "Favorite brew failed to create successfully." })
+      redirect_to("/favorite_brews", { :alert => the_favorite_brew.errors.full_messages.to_sentence })
     end
   end
 
@@ -41,7 +45,7 @@ class FavoriteBrewsController < ApplicationController
       the_favorite_brew.save
       redirect_to("/favorite_brews/#{the_favorite_brew.id}", { :notice => "Favorite brew updated successfully."} )
     else
-      redirect_to("/favorite_brews/#{the_favorite_brew.id}", { :alert => "Favorite brew failed to update successfully." })
+      redirect_to("/favorite_brews/#{the_favorite_brew.id}", { :alert => the_favorite_brew.errors.full_messages.to_sentence })
     end
   end
 

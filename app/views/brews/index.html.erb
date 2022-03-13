@@ -1,7 +1,7 @@
 <div>
   <div>
     <div class="display-4">
-      List of all brews
+      List of all your brews
     </div>
   </div>
 </div>
@@ -14,7 +14,7 @@
       <thead class="thead-dark">
         <tr>
           <th>
-            Brewer
+            Brew Date
           </th>
 
           <th>
@@ -34,7 +34,11 @@
           </th>
 
           <th>
-            Grind setting
+            Grind Setting
+          </th>
+
+          <th>
+            Coffee Weight (g)
           </th>
 
           <th>
@@ -58,7 +62,7 @@
         <% @list_of_brews.each do |a_brew| %>
         <tr>
           <td>
-            <%= a_brew.user.full_name %>
+            <%= a_brew.created_at.strftime("%m/%d/%Y") %>
           </td>
 
           <td>
@@ -79,6 +83,10 @@
 
           <td>
             <%= a_brew.grind_setting %>
+          </td>
+
+          <td>
+            <%= a_brew.coffee_weight %>
           </td>
 
           <td>

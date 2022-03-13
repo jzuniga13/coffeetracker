@@ -1,7 +1,7 @@
 <div>
   <div>
     <div class="display-4">
-      List of all favorite brews
+      Your favorite brews
     </div>
   </div>
 </div>
@@ -10,91 +10,99 @@
 
 <div>
   <div>
-    <h2>
-      Add a new favorite brew
-    </h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
 
-    <form action="/insert_favorite_brew" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
+          <th>
+            Bean
+          </th>
 
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
+          <th>
+            Roaster
+          </th>
 
-      <div>
-        <label for="brew_id_box">
-          Brew
-        </label>
+          <th>
+            Device
+          </th>
 
-        <input type="text" id="brew_id_box" name="query_brew_id">
-      </div>
+          <th>
+            Grinder
+          </th>
 
-      <button>
-        Create favorite brew
-      </button>
-    </form>
-  </div>
-</div>
+          <th>
+            Grind setting
+          </th>
 
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
+          <th>
+            Water Temp (C)
+          </th>
+          
+          <th>
+            Flavor Notes
+          </th>
 
-        <th>
-          User
-        </th>
+          <th>
+            Comments
+          </th>
 
-        <th>
-          Brew
-        </th>
+          <th>
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
 
-        <th>
-          Created at
-        </th>
+      <tbody>
+        <% @list_of_favorite_brews.each do |a_favorite_brew| %>
+        <tr>
 
-        <th>
-          Updated at
-        </th>
+          <td>
+            <%= a_favorite_brew.brew.bean.name %>
+          </td>
 
-        <th>
-        </th>
-      </tr>
+          <td>
+            <%= a_favorite_brew.brew.bean.roaster.name %>
+          </td>
 
-      <% @list_of_favorite_brews.each do |a_favorite_brew| %>
-      <tr>
-        <td>
-          <%= a_favorite_brew.id %>
-        </td>
+          <td>
+            <%= a_favorite_brew.brew.device.device %>
+          </td>
 
-        <td>
-          <%= a_favorite_brew.user_id %>
-        </td>
+          <td>
+            <%= a_favorite_brew.brew.grinder %>
+          </td>
 
-        <td>
-          <%= a_favorite_brew.brew_id %>
-        </td>
+          <td>
+            <%= a_favorite_brew.brew.grind_setting %>
+          </td>
 
-        <td>
-          <%= time_ago_in_words(a_favorite_brew.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_favorite_brew.updated_at) %> ago
-        </td>
+          <td>
+            <%= a_favorite_brew.brew.water_temp %>
+          </td>
 
-        <td>
-          <a href="/favorite_brews/<%= a_favorite_brew.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+          <td>
+            <%= a_favorite_brew.brew.flavors %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.comments %>
+          </td>
+
+          <td>
+            <a href="/brews/<%= a_favorite_brew.brew.id %>">
+              Show details
+            </a>
+          </td>
+
+          <td>
+            <a href="/delete_favorite_brew/<%= a_favorite_brew.id %>">
+              Delete Favorite
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

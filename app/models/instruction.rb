@@ -12,5 +12,9 @@
 #  brew_id    :integer
 #
 class Instruction < ApplicationRecord
+  validates :step_num, :presence => true
+  validates :action, :presence => true
+  validates :weight, :presence => true
+  validates :time, :presence => true
   belongs_to(:brew)
 end

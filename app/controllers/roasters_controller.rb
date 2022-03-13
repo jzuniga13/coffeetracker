@@ -1,4 +1,6 @@
 class RoastersController < ApplicationController
+  before_action(:force_user_sign_in)
+  
   def index
     matching_roasters = Roaster.all
 
