@@ -1,43 +1,42 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
   
   <div class="container">
-    <a class="navbar-brand" href="/">
-      CoffeeTracker
-    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <a class="navbar-brand" href="/">
+      CoffeeTracker
+    </a>
+
+
+
     <div class="collapse navbar-collapse" id="collapsible-nav-links">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Contents
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/favorite_brews" class="dropdown-item">Favorite Brews</a>            
-            <a href="/brews" class="dropdown-item">All Brews</a>            
-            <a href="/beans" class="dropdown-item">Beans</a>
-            <a href="/roasters" class="dropdown-item">Roasters</a>
-            <a href="/devices" class="dropdown-item">Devices</a>
-          </div>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="/favorite_brews">Favorite Brews</a></li>
+        <li class="nav-item"><a class="nav-link" href="/brew">All Brews</a></li>
+        <li class="nav-item"><a class="nav-link" href="/beans">Beans</a></li>
+        <li class="nav-item"><a class="nav-link" href="/roasters">Roasters</a></li>
+        <li class="nav-item"><a class="nav-link" href="/devices">Devices</a></li>
       </ul>
+      <hr class="border-light">
+      <% if @current_user == nil %>
+        <div>
+          <a href="/user_sign_up">Sign Up</a>
+          <span class="text-white"> | </span>
+          <a href="/user_sign_in">Sign In</a>
+        </div>
+      <% else %>
+        <div class="text-white">
+          You are logged in as <%= @current_user.full_name%> | 
+          <a href="/user_sign_out">Sign Out</a>
+        </div>
+      <% end %>
+
     </div> <!-- .navbar-collapse -->
 
-    <% if @current_user == nil %>
-      <div>
-        <a href="/user_sign_up">Sign Up</a>
-        <span class="text-white"> | </span>
-        <a href="/user_sign_in">Sign In</a>
-      </div>
-    <% else %>
-      <div class="text-white">
-        You are logged in as <%= @current_user.full_name%>
-        <a href="/user_sign_out">Sign Out</a>
-      </div>
-    <% end %>
+
 
   </div> <!-- .container -->
 </nav>
