@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_09_024306) do
+ActiveRecord::Schema.define(version: 2022_03_13_173810) do
 
   create_table "beans", force: :cascade do |t|
     t.integer "roaster_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_024306) do
     t.integer "instructions_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "coffee_weight"
   end
 
   create_table "devices", force: :cascade do |t|

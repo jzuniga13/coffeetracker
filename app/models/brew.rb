@@ -3,6 +3,7 @@
 # Table name: brews
 #
 #  id              :integer          not null, primary key
+#  coffee_weight   :integer
 #  comments        :string
 #  flavors         :string
 #  grind_setting   :integer

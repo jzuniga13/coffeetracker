@@ -41,7 +41,7 @@
 <div class="container">
   <% Instruction.where({:brew_id => @the_brew.id}).each do |a_step| %>
     <div class="row">
-      <h5 class="m-sm-1">Step <%=a_step.step_num%></h5>
+      <h5 class="m-sm-1 mb-3">Step <%=a_step.step_num%></h5>
       <form class="form-inline">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
