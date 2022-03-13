@@ -18,28 +18,21 @@ class InstructionsController < ApplicationController
   end
 
   def create
+    require 'time'
     the_instruction = Instruction.new
-    the_instruction.step_1_action = params.fetch("query_step_1_action")
-    the_instruction.step_1_weight = params.fetch("query_step_1_weight")
-    the_instruction.step_1_time = params.fetch("query_step_1_time")
-    the_instruction.step_2_action = params.fetch("query_step_2_action")
-    the_instruction.step_2_weight = params.fetch("query_step_2_weight")
-    the_instruction.step_2_time = params.fetch("query_step_2_time")
-    the_instruction.step_3_action = params.fetch("query_step_3_action")
-    the_instruction.step_3_weight = params.fetch("query_step_3_weight")
-    the_instruction.step_3_time = params.fetch("query_step_3_time")
-    the_instruction.step_4_action = params.fetch("query_step_4_action")
-    the_instruction.step_4_weight = params.fetch("query_step_4_weight")
-    the_instruction.step_4_time = params.fetch("query_step_4_time")
-    the_instruction.step_5_action = params.fetch("query_step_5_action")
-    the_instruction.step_5_weight = params.fetch("query_step_5_weight")
-    the_instruction.step_5_time = params.fetch("query_step_5_time")
+    the_instruction.brew_id = params.fetch("path_id")
+    the_instruction.step_num = Instruction.where({:brew_id => params.fetch("path_id")}).count + 1
+    the_instruction.action = params.fetch("query_step_action")
+    the_instruction.weight = params.fetch("query_step_weight")
+    t1 = Time.parse("00:0"+params.fetch("query_step_time"))
+    end_time = t1.min*60+t1.sec
+    the_instruction.time = t1.min*60+t1.sec
 
     if the_instruction.valid?
       the_instruction.save
-      redirect_to("/instructions", { :notice => "Instruction created successfully." })
+      redirect_to("/brew_instructions/#{params.fetch("path_id")}", { :notice => "Instruction created successfully." })
     else
-      redirect_to("/instructions", { :notice => "Instruction failed to create successfully." })
+      redirect_to("/brew_instructions/#{params.fetch("path_id")}", { :alert => the_instruction.errors.full_messages.to_sentence })
     end
   end
 
@@ -67,7 +60,7 @@ class InstructionsController < ApplicationController
       the_instruction.save
       redirect_to("/instructions/#{the_instruction.id}", { :notice => "Instruction updated successfully."} )
     else
-      redirect_to("/instructions/#{the_instruction.id}", { :alert => "Instruction failed to update successfully." })
+      redirect_to("/instructions/#{the_instruction.id}", { :alert => the_instruction.errors.full_messages.to_sentence })
     end
   end
 

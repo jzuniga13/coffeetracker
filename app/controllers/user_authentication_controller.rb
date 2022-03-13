@@ -2,6 +2,10 @@ class UserAuthenticationController < ApplicationController
   # Uncomment this if you want to force users to sign in before any other actions
   # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
 
+  def full_name
+    return self.first_name + " " + self.last_name
+  end
+
   def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
   end

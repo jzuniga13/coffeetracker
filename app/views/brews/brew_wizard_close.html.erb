@@ -1,28 +1,33 @@
 <div>
-  <div>
-    <h1 class="display-4">
-      Brew on <%= @the_brew.created_at.strftime("%B%eth, %Y") %>
-    </h1>
+  <h4 mb-3>
+    How was it?
+  </h4>
+</div>
 
-    <div>
-      <div>
-        <a href="/brews">
-          Go back
-        </a>
+<div>
+  <form action="/modify_brew/<%=@the_brew.id%>">
+    <div class="input-group input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text font-weight-bolder" id="flavors_form">Flavor Notes</span>
       </div>
-
-      <div>
-        <a href="/delete_brew/<%= @the_brew.id %>">
-          Delete brew
-        </a>
-      </div>
+      <input type="text-area" class="form-control" aria-describedby="flavors_form" name="query_flavors">
     </div>
-  </div>
+
+    <div class="input-group input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text font-weight-bolder" id="comments_form">Comments</span>
+      </div>
+      <input type="text" class="form-control" aria-describedby="comments_form" name="query_comments">
+    </div>
+
+    <button class="btn btn-success mb-3">
+      Complete Brew
+    </button>
+  </form>
 </div>
 
 <hr>
 
-<h4 class="mb-3">Setup</h4>
 <div>
   <ul class="list-group">
     <li class="list-group-item"><span class="font-weight-bolder">Brew Method </span><%=@the_brew.device.device%></li>
@@ -30,12 +35,9 @@
     <li class="list-group-item"><span class="font-weight-bolder">Roaster </span><%=@the_brew.bean.roaster.name%></li>
     <li class="list-group-item"><span class="font-weight-bolder">Grinder (setting) </span><%=@the_brew.grinder + " (" + @the_brew.grind_setting.to_s + ")" %></li>
     <li class="list-group-item"><span class="font-weight-bolder">Water Temp </span><%=@the_brew.water_temp%></li>
-    <li class="list-group-item"><span class="font-weight-bolder">Flavor Notes </span><%=@the_brew.flavors%></li>
-    <li class="list-group-item"><span class="font-weight-bolder">Comments </span><%=@the_brew.comments%></li>
   </ul>
 </div>
 <hr>
-<h4 class="mb-3">Recipe</h4>
 <div class="container">
   <% Instruction.where({:brew_id => @the_brew.id}).each do |a_step| %>
     <div class="row">

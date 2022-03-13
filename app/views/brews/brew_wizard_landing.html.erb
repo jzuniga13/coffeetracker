@@ -1,0 +1,54 @@
+<div>
+  <div>
+    <h1>
+      Let's get brewing!
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h4>
+      What are you using today?
+    </h4>
+
+    <form action="/insert_brew" method="post">
+      <div>
+        <label for="device_name_box">Device</label>
+        <input type="text" id="device_name_box" name="query_device_name" value="<%=params.fetch("path_id")%>">
+      </div>
+
+      <div>
+        <label for="bean_id_box">Bean</label>
+        <select id="bean_id_box" name="query_bean_name">
+          <option class="dropdown-item" value=""></option>
+          <% Bean.all.each do |a_bean| %>
+            <option class="dropdown-item" ><%= a_bean.name%></option>
+          <% end %>
+        </select>
+        <a href="/beans">Add a new bean</a>
+      </div>
+
+      <div>
+        <label for="grinder_box">Grinder</label>
+        <input type="text" id="grinder_box" name="query_grinder" placeholder="e.g. Niche Zero">
+      </div>
+
+      <div>
+        <label for="grind_setting_box">Grind setting</label>
+        <input type="text" id="grind_setting_box" name="query_grind_setting" placeholder="e.g. 15">
+      </div>
+
+      <div>
+        <label for="water_temp_box">Water temp</label>
+        <input type="text" id="water_temp_box" name="query_water_temp" placeholder="e.g. 92">
+      </div>
+
+      <button class="btn btn-primary">
+        Go to Brew Recipe
+      </button>
+    </form>
+  </div>
+</div>

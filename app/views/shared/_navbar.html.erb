@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  
   <div class="container">
     <a class="navbar-brand" href="/">
       CoffeeTracker
@@ -12,12 +13,9 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Resources
+            Contents
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/instructions" class="dropdown-item">
-              Instructions
-            </a>
             <a href="/brews" class="dropdown-item">
               Brews
             </a>
@@ -44,7 +42,7 @@
         <a href="/user_sign_in">Sign In</a>
       </div>
     <% else %>
-      <div>
+      <div class="text-white">
         You are logged in as <%= @current_user.full_name%>
         <a href="/user_sign_out">Sign Out</a>
       </div>

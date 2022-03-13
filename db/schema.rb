@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_043023) do
+ActiveRecord::Schema.define(version: 2022_03_09_024306) do
 
   create_table "beans", force: :cascade do |t|
     t.integer "roaster_id"
@@ -51,23 +51,13 @@ ActiveRecord::Schema.define(version: 2022_03_08_043023) do
   end
 
   create_table "instructions", force: :cascade do |t|
-    t.string "step_1_action"
-    t.integer "step_1_weight"
-    t.integer "step_1_time"
-    t.string "step_2_action"
-    t.integer "step_2_weight"
-    t.integer "step_2_time"
-    t.string "step_3_action"
-    t.integer "step_3_weight"
-    t.integer "step_3_time"
-    t.string "step_4_action"
-    t.integer "step_4_weight"
-    t.integer "step_4_time"
-    t.string "step_5_action"
-    t.integer "step_5_weight"
-    t.integer "step_5_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "step_num"
+    t.integer "brew_id"
+    t.string "action"
+    t.integer "weight"
+    t.integer "time"
   end
 
   create_table "roasters", force: :cascade do |t|

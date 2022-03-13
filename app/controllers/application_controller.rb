@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   def index
     if @current_user == nil
-      redirect_to("/user_sign_in", { :alert => "You have to sign in first." })
+      redirect_to("/user_sign_in", { :alert => "Please sign in!" })
     else
       render({:template => "/shared/index.html.erb"})
     end

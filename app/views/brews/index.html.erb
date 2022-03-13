@@ -1,8 +1,8 @@
 <div>
   <div>
-    <h1>
+    <div class="display-4">
       List of all brews
-    </h1>
+    </div>
   </div>
 </div>
 
@@ -10,203 +10,97 @@
 
 <div>
   <div>
-    <h2>
-      Add a new brew
-    </h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>
+            Brewer
+          </th>
 
-    <form action="/insert_brew" method="post">
-      <div>
-        <label for="bean_id_box">
-          Bean
-        </label>
+          <th>
+            Bean
+          </th>
 
-        <input type="text" id="bean_id_box" name="query_bean_id">
-      </div>
+          <th>
+            Roaster
+          </th>
 
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
+          <th>
+            Device
+          </th>
 
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
+          <th>
+            Grinder
+          </th>
 
-      <div>
-        <label for="device_id_box">
-          Device
-        </label>
+          <th>
+            Grind setting
+          </th>
 
-        <input type="text" id="device_id_box" name="query_device_id">
-      </div>
+          <th>
+            Water Temp (C)
+          </th>
+          
+          <th>
+            Flavor Notes
+          </th>
 
-      <div>
-        <label for="grind_setting_box">
-          Grind setting
-        </label>
+          <th>
+            Comments
+          </th>
 
-        <input type="text" id="grind_setting_box" name="query_grind_setting">
-      </div>
+          <th>
+          </th>
+        </tr>
+      </thead>
 
-      <div>
-        <label for="flavors_box">
-          Flavors
-        </label>
+      <tbody>
+        <% @list_of_brews.each do |a_brew| %>
+        <tr>
+          <td>
+            <%= a_brew.user.full_name %>
+          </td>
 
-        <input type="text" id="flavors_box" name="query_flavors">
-      </div>
+          <td>
+            <%= a_brew.bean.name %>
+          </td>
 
-      <div>
-        <label for="grinder_box">
-          Grinder
-        </label>
+          <td>
+            <%= a_brew.bean.roaster.name %>
+          </td>
 
-        <input type="text" id="grinder_box" name="query_grinder">
-      </div>
+          <td>
+            <%= a_brew.device.device %>
+          </td>
 
-      <div>
-        <label for="water_temp_box">
-          Water temp
-        </label>
+          <td>
+            <%= a_brew.grinder %>
+          </td>
 
-        <input type="text" id="water_temp_box" name="query_water_temp">
-      </div>
+          <td>
+            <%= a_brew.grind_setting %>
+          </td>
 
-      <div>
-        <label for="comments_box">
-          Comments
-        </label>
+          <td>
+            <%= a_brew.water_temp %>
+          </td>
 
-        <input type="text" id="comments_box" name="query_comments">
-      </div>
+          <td>
+            <%= a_brew.flavors %>
+          </td>
 
-      <div>
-        <label for="instructions_id_box">
-          Instructions
-        </label>
+          <td>
+            <%= a_brew.comments %>
+          </td>
 
-        <input type="text" id="instructions_id_box" name="query_instructions_id">
-      </div>
-
-      <button>
-        Create brew
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Bean
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Device
-        </th>
-
-        <th>
-          Grind setting
-        </th>
-
-        <th>
-          Flavors
-        </th>
-
-        <th>
-          Grinder
-        </th>
-
-        <th>
-          Water temp
-        </th>
-
-        <th>
-          Comments
-        </th>
-
-        <th>
-          Instructions
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_brews.each do |a_brew| %>
-      <tr>
-        <td>
-          <%= a_brew.id %>
-        </td>
-
-        <td>
-          <%= a_brew.bean_id %>
-        </td>
-
-        <td>
-          <%= a_brew.user_id %>
-        </td>
-
-        <td>
-          <%= a_brew.device_id %>
-        </td>
-
-        <td>
-          <%= a_brew.grind_setting %>
-        </td>
-
-        <td>
-          <%= a_brew.flavors %>
-        </td>
-
-        <td>
-          <%= a_brew.grinder %>
-        </td>
-
-        <td>
-          <%= a_brew.water_temp %>
-        </td>
-
-        <td>
-          <%= a_brew.comments %>
-        </td>
-
-        <td>
-          <%= a_brew.instructions_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_brew.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_brew.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/brews/<%= a_brew.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+          <td>
+            <a href="/brews/<%= a_brew.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

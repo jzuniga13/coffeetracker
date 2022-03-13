@@ -25,7 +25,7 @@ class DevicesController < ApplicationController
       the_device.save
       redirect_to("/devices", { :notice => "Device created successfully." })
     else
-      redirect_to("/devices", { :notice => "Device failed to create successfully." })
+      redirect_to("/devices", { :alert => the_device.errors.full_messages.to_sentence  })
     end
   end
 
@@ -39,7 +39,7 @@ class DevicesController < ApplicationController
       the_device.save
       redirect_to("/devices/#{the_device.id}", { :notice => "Device updated successfully."} )
     else
-      redirect_to("/devices/#{the_device.id}", { :alert => "Device failed to update successfully." })
+      redirect_to("/devices/#{the_device.id}", { :alert => the_device.errors.full_messages.to_sentence })
     end
   end
 

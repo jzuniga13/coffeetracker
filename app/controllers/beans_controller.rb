@@ -2,7 +2,7 @@ class BeansController < ApplicationController
   def index
     matching_beans = Bean.all
 
-    @list_of_beans = matching_beans.order({ :created_at => :desc })
+    @list_of_beans = matching_beans.order({ :roast_date => :asc })
 
     render({ :template => "beans/index.html.erb" })
   end
@@ -19,7 +19,7 @@ class BeansController < ApplicationController
 
   def create
     the_bean = Bean.new
-    the_bean.roaster_id = params.fetch("query_roaster_id")
+    the_bean.roaster_id = Roaster.where({:name => params.fetch("query_roaster_name")}).first.id
     the_bean.name = params.fetch("query_name")
     the_bean.country_of_origin = params.fetch("query_country_of_origin")
     the_bean.roast_date = params.fetch("query_roast_date")
@@ -30,7 +30,7 @@ class BeansController < ApplicationController
       the_bean.save
       redirect_to("/beans", { :notice => "Bean created successfully." })
     else
-      redirect_to("/beans", { :notice => "Bean failed to create successfully." })
+      redirect_to("/beans", { :alert => the_bean.errors.full_messages.to_sentence })
     end
   end
 
@@ -49,7 +49,7 @@ class BeansController < ApplicationController
       the_bean.save
       redirect_to("/beans/#{the_bean.id}", { :notice => "Bean updated successfully."} )
     else
-      redirect_to("/beans/#{the_bean.id}", { :alert => "Bean failed to update successfully." })
+      redirect_to("/beans/#{the_bean.id}", { :alert => the_bean.errors.full_messages.to_sentence })
     end
   end
 

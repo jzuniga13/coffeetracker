@@ -1,8 +1,8 @@
 <div>
   <div>
-    <h1>
+    <div class="display-4">
       List of all beans
-    </h1>
+    </div>
   </div>
 </div>
 
@@ -16,11 +16,14 @@
 
     <form action="/insert_bean" method="post">
       <div>
-        <label for="roaster_id_box">
-          Roaster
-        </label>
-
-        <input type="text" id="roaster_id_box" name="query_roaster_id">
+        <label for="roaster_name_box">Roaster</label>
+        <select id="roaster_name_box" name="query_roaster_name">
+          <option class="dropdown-item" value=""></option>
+          <% Roaster.all.each do |a_roast| %>
+            <option class="dropdown-item" ><%= a_roast.name %></option>
+          <% end %>
+        </select>
+        <a href="/roasters">Add a new roaster</a>
       </div>
 
       <div>
@@ -44,7 +47,7 @@
           Roast date
         </label>
 
-        <input type="datetime-local" id="roast_date_box" name="query_roast_date">
+        <input type="date" id="roast_date_box" name="query_roast_date">
       </div>
 
       <div>
@@ -63,8 +66,8 @@
         <input type="text" id="roast_level_box" name="query_roast_level">
       </div>
 
-      <button>
-        Create bean
+      <button class="btn btn-primary">
+        Add bean
       </button>
     </form>
   </div>
@@ -73,92 +76,44 @@
 <hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
+    <table class="table">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Roaster</th>
 
-        <th>
-          Roaster
-        </th>
+          <th>Name</th>
 
-        <th>
-          Name
-        </th>
+          <th>Country of origin</th>
 
-        <th>
-          Country of origin
-        </th>
+          <th>Roast date</th>
 
-        <th>
-          Roast date
-        </th>
+          <th>Process</th>
 
-        <th>
-          Process
-        </th>
+          <th>Roast level</th>
 
-        <th>
-          Roast level
-        </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list_of_beans.each do |a_bean| %>
+        <tr>
+          <td><%= a_bean.roaster.name %></td>
 
-        <th>
-          Created at
-        </th>
+          <td><%= a_bean.name %></td>
 
-        <th>
-          Updated at
-        </th>
+          <td><%= a_bean.country_of_origin %></td>
 
-        <th>
-        </th>
-      </tr>
+          <td><%= a_bean.roast_date.strftime("%m/%d/%Y") %></td>
 
-      <% @list_of_beans.each do |a_bean| %>
-      <tr>
-        <td>
-          <%= a_bean.id %>
-        </td>
+          <td><%= a_bean.process %></td>
 
-        <td>
-          <%= a_bean.roaster_id %>
-        </td>
+          <td><%= a_bean.roast_level %></td>
 
-        <td>
-          <%= a_bean.name %>
-        </td>
-
-        <td>
-          <%= a_bean.country_of_origin %>
-        </td>
-
-        <td>
-          <%= a_bean.roast_date %>
-        </td>
-
-        <td>
-          <%= a_bean.process %>
-        </td>
-
-        <td>
-          <%= a_bean.roast_level %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_bean.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_bean.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/beans/<%= a_bean.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+          <td><a href="/beans/<%= a_bean.id %>">Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

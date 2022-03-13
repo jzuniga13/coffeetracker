@@ -25,7 +25,7 @@ class RoastersController < ApplicationController
       the_roaster.save
       redirect_to("/roasters", { :notice => "Roaster created successfully." })
     else
-      redirect_to("/roasters", { :notice => "Roaster failed to create successfully." })
+      redirect_to("/roasters", { :alert => the_roaster.errors.full_messages.to_sentence })
     end
   end
 
@@ -39,7 +39,7 @@ class RoastersController < ApplicationController
       the_roaster.save
       redirect_to("/roasters/#{the_roaster.id}", { :notice => "Roaster updated successfully."} )
     else
-      redirect_to("/roasters/#{the_roaster.id}", { :alert => "Roaster failed to update successfully." })
+      redirect_to("/roasters/#{the_roaster.id}", { :alert => the_roaster.errors.full_messages.to_sentence })
     end
   end
 

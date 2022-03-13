@@ -16,10 +16,11 @@
 #  user_id         :integer
 #
 class Brew < ApplicationRecord
+  validates :bean_id, :presence => true
   has_many(:users, { :through => :favorite_brews, :source => :user })
-  belongs_to(:instructions, { :class_name => "Instruction" })
+  has_many(:instructions, { :dependent => :destroy })
   has_many(:favorite_brews, { :dependent => :destroy })
   belongs_to(:user)
-  belongs_to(:brew_method, { :class_name => "Device", :foreign_key => "device_id" })
+  belongs_to(:device)
   belongs_to(:bean)
 end

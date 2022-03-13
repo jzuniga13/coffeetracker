@@ -7,6 +7,20 @@ class BrewsController < ApplicationController
     render({ :template => "brews/index.html.erb" })
   end
 
+  def brew_wizard_landing
+    render({:template => "brews/brew_wizard_landing.html.erb"})
+  end
+
+  def brew_wizard_instr
+    render({:template => "brews/brew_wizard_instr.html.erb"})
+  end
+
+  def brew_wizard_close
+    matching_brews = Brew.where({:id => params.fetch("path_id")})
+    @the_brew = matching_brews.first
+    render({:template => "brews/brew_wizard_close.html.erb"})
+  end
+
   def show
     the_id = params.fetch("path_id")
 
@@ -19,21 +33,22 @@ class BrewsController < ApplicationController
 
   def create
     the_brew = Brew.new
-    the_brew.bean_id = params.fetch("query_bean_id")
-    the_brew.user_id = params.fetch("query_user_id")
-    the_brew.device_id = params.fetch("query_device_id")
+    if params.fetch("query_bean_name") == ""
+      the_brew.bean_id = nil
+    else
+      the_brew.bean_id = Bean.where({:name => params.fetch("query_bean_name")}).first.id
+    end
+    the_brew.user_id = @current_user.id
+    the_brew.device_id = Device.where({:device => params.fetch("query_device_name")}).first.id
     the_brew.grind_setting = params.fetch("query_grind_setting")
-    the_brew.flavors = params.fetch("query_flavors")
     the_brew.grinder = params.fetch("query_grinder")
     the_brew.water_temp = params.fetch("query_water_temp")
-    the_brew.comments = params.fetch("query_comments")
-    the_brew.instructions_id = params.fetch("query_instructions_id")
 
     if the_brew.valid?
       the_brew.save
-      redirect_to("/brews", { :notice => "Brew created successfully." })
+      redirect_to("/brew_instructions/#{the_brew.id}")
     else
-      redirect_to("/brews", { :notice => "Brew failed to create successfully." })
+      redirect_to("/brew_method/"+params.fetch("query_device_name"), { :alert => the_brew.errors.full_messages.to_sentence })
     end
   end
 
@@ -41,21 +56,14 @@ class BrewsController < ApplicationController
     the_id = params.fetch("path_id")
     the_brew = Brew.where({ :id => the_id }).at(0)
 
-    the_brew.bean_id = params.fetch("query_bean_id")
-    the_brew.user_id = params.fetch("query_user_id")
-    the_brew.device_id = params.fetch("query_device_id")
-    the_brew.grind_setting = params.fetch("query_grind_setting")
     the_brew.flavors = params.fetch("query_flavors")
-    the_brew.grinder = params.fetch("query_grinder")
-    the_brew.water_temp = params.fetch("query_water_temp")
     the_brew.comments = params.fetch("query_comments")
-    the_brew.instructions_id = params.fetch("query_instructions_id")
-
+    
     if the_brew.valid?
       the_brew.save
       redirect_to("/brews/#{the_brew.id}", { :notice => "Brew updated successfully."} )
     else
-      redirect_to("/brews/#{the_brew.id}", { :alert => "Brew failed to update successfully." })
+      redirect_to("/brews/#{the_brew.id}", { :alert => the_brew.errors.full_messages.to_sentence })
     end
   end
 

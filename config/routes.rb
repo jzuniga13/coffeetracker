@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Routes for the Instruction resource:
 
   # CREATE
-  post("/insert_instruction", { :controller => "instructions", :action => "create" })
+  get("/insert_instruction/:path_id", { :controller => "instructions", :action => "create" })
           
   # READ
   get("/instructions", { :controller => "instructions", :action => "index" })
@@ -27,13 +27,14 @@ Rails.application.routes.draw do
   post("/insert_brew", { :controller => "brews", :action => "create" })
           
   # READ
+  get("/brew_method/:path_id", { :controller => "brews", :action => "brew_wizard_landing" })
+  get("/brew_instructions/:path_id", {:controller => "brews", :action => "brew_wizard_instr"})
   get("/brews", { :controller => "brews", :action => "index" })
-  
   get("/brews/:path_id", { :controller => "brews", :action => "show" })
   
   # UPDATE
-  
-  post("/modify_brew/:path_id", { :controller => "brews", :action => "update" })
+  get("/insert_comments/:path_id", {:controller => "brews", :action => "brew_wizard_close"})
+  get("/modify_brew/:path_id", { :controller => "brews", :action => "update" })
   
   # DELETE
   get("/delete_brew/:path_id", { :controller => "brews", :action => "destroy" })
