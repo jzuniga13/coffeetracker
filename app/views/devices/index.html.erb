@@ -17,13 +17,13 @@
     <form action="/insert_device" method="post">
       <div>
         <label for="device_box">
-          Device
+          Device Name
         </label>
 
         <input type="text" id="device_box" name="query_device">
       </div>
 
-      <button>
+      <button class="btn btn-primary">
         Create device
       </button>
     </form>
@@ -33,52 +33,23 @@
 <hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
+    <table class="table">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Device</th>
 
-        <th>
-          Device
-        </th>
+          <th class="text-center">Number of brews</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list_of_devices.each do |a_device| %>
+        <tr>
+          <td><%= a_device.device %></td>
 
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_devices.each do |a_device| %>
-      <tr>
-        <td>
-          <%= a_device.id %>
-        </td>
-
-        <td>
-          <%= a_device.device %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_device.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_device.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/devices/<%= a_device.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+          <td class="text-center"><%=a_device.brews.count%></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
