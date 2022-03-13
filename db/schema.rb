@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_173810) do
+ActiveRecord::Schema.define(version: 2022_03_13_174814) do
 
   create_table "beans", force: :cascade do |t|
     t.integer "roaster_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_173810) do
     t.integer "bean_id"
     t.integer "user_id"
     t.integer "device_id"
-    t.integer "grind_setting"
+    t.float "grind_setting"
     t.string "flavors"
     t.string "grinder"
     t.string "water_temp"

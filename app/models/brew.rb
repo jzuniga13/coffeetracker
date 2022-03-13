@@ -6,7 +6,7 @@
 #  coffee_weight   :integer
 #  comments        :string
 #  flavors         :string
-#  grind_setting   :integer
+#  grind_setting   :float
 #  grinder         :string
 #  water_temp      :string
 #  created_at      :datetime         not null
