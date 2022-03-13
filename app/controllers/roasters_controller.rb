@@ -45,6 +45,20 @@ class RoastersController < ApplicationController
     end
   end
 
+  def update_image
+    the_id = params.fetch("path_id")
+    the_roaster = Roaster.where({ :id => the_id }).at(0)
+    
+    the_roaster.image = params.fetch("query_image_url")
+
+    if the_roaster.valid?
+      the_roaster.save
+      redirect_to("/roasters/#{the_roaster.id}", { :notice => "Picture updated successfully."} )
+    else
+      redirect_to("/roasters/#{the_roaster.id}", { :alert => the_roaster.errors.full_messages.to_sentence })
+    end
+  end
+
   def destroy
     the_id = params.fetch("path_id")
     the_roaster = Roaster.where({ :id => the_id }).at(0)

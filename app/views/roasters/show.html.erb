@@ -1,5 +1,7 @@
 <div>
   <div>
+    <img class="img-fluid max-width: 100%" src="<%=@the_roaster.image%>" alt="">
+    
     <div class="display-4">
       <%= @the_roaster.name %> details
     </div>
@@ -21,17 +23,26 @@
 
 <div>
   <div>
-    <form action="/modify_roaster/<%= @the_roaster.id %>"  method="post" >
+    <form class="form-inline" action="/modify_roaster/<%= @the_roaster.id %>"  method="post" >
       <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name" value="<%= @the_roaster.name %>">
+        <label class="sr-only" for="name_box">Name</label>
+        <input class="form-control mb-3" type="text" id="name_box" name="query_name" value="<%= @the_roaster.name %>">
       </div>
 
-      <button class="btn btn-primary">
+      <button class="btn btn-primary mb-3">
         Update name
+      </button>
+    </form>
+  </div>
+    <div>
+    <form class="form-inline" action="/modify_roaster_image/<%= @the_roaster.id %>"  method="post" >
+      <div>
+        <label class="sr-only" for="image_box">Image</label>
+        <input class="form-control mb-3" type="text" id="image_box" name="query_image_url" value="<%= @the_roaster.image %>">
+      </div>
+
+      <button class="btn btn-primary mb-3">
+        Upload image
       </button>
     </form>
   </div>
