@@ -22,7 +22,7 @@
 
       <div>
         <label for="bean_id_box">Bean</label>
-        <select id="bean_id_box" name="query_bean_name">
+        <select class="form-control-sm" id="bean_id_box" name="query_bean_name">
           <option class="dropdown-item" value=""></option>
           <% Bean.all.each do |a_bean| %>
             <option class="dropdown-item" ><%= a_bean.name%></option>
