@@ -14,6 +14,7 @@
 #
 class Bean < ApplicationRecord
   validates :name, :presence => true
+  validates :roast_date, numericality: {:less_than => :created_at, :message => "must be in the past."}
   belongs_to(:roaster)
   has_many(:brews, { :dependent => :destroy })
 end
