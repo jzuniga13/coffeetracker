@@ -38,7 +38,7 @@ class BrewsController < ApplicationController
     if params.fetch("query_bean_name") == ""
       the_brew.bean_id = nil
     else
-      the_brew.bean_id = Bean.where({:name => params.fetch("query_bean_name")}).first.id
+      the_brew.bean_id = params.fetch("query_bean_name")
     end
     the_brew.user_id = @current_user.id
     the_brew.device_id = Device.where({:device => params.fetch("query_device_name")}).first.id

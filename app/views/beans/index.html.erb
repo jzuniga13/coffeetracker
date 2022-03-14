@@ -78,6 +78,9 @@
 
           <th>
           </th>
+
+          <th>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -96,6 +99,8 @@
           <td><%= a_bean.roast_level %></td>
 
           <td><a href="/beans/<%= a_bean.id %>">Show details</a></td>
+
+          <td><a href="/beans/analytics/<%= a_bean.id %>">Analytics</a></td>
         </tr>
         <% end %>
       </tbody>

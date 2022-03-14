@@ -63,4 +63,27 @@ class BeansController < ApplicationController
 
     redirect_to("/beans", { :notice => "Bean deleted successfully."} )
   end
+
+  def analytics
+    matching_beans = Bean.where({ :id => params.fetch("path_id") })
+    @the_bean = matching_beans.at(0)
+
+    
+    @master_array = Array.new
+    matching_brews = @the_bean.brews
+
+    matching_brews.each do |a_brew|
+      @master_hash = Hash.new
+      storage_array = Array.new
+      matching_instructions = a_brew.instructions
+      matching_instructions.each do |a_ins|
+        storage_array.push([a_ins.time, a_ins.weight])
+      end
+      @master_hash = {:brew => a_brew.created_at.strftime("%m/%d/%Y"), :data => storage_array}
+      @master_array.push(@master_hash)
+    end
+
+    render({:template => "/beans/analytics.html.erb"})
+  end
+
 end

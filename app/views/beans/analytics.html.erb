@@ -1,0 +1,32 @@
+<div id="hoge" data-hoge-id="<%= @master_array.last.fetch(:data).to_json %>"></div>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable($('#hoge').data('hoge-id'));
+
+        var options = {
+          title: 'Brewing Times',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+
+<div class="display-4">Analytics for <%=@the_bean.name%></div>
+
+<div>
+  <button type="button" class="btn btn-link"><a href="/beans">Go back</a></button>
+</div>
+
+<%=@master_array.last.fetch(:data)%>
+
+<div id="curve_chart" style="width: 900px; height: 500px"></div>

@@ -25,7 +25,7 @@
         <select class="form-control-sm" id="bean_id_box" name="query_bean_name">
           <option class="dropdown-item" value=""></option>
           <% Bean.all.each do |a_bean| %>
-            <option class="dropdown-item" ><%= a_bean.name%></option>
+            <option class="dropdown-item" value="<%=a_bean.id%>"><%=a_bean.roaster.name%> <%= a_bean.name%> (<%=a_bean.roast_date.strftime("%m/%d/%Y")%>)</option>
           <% end %>
         </select>
         <a href="/beans">Add a new bean</a>

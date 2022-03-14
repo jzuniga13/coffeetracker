@@ -137,6 +137,8 @@ Rails.application.routes.draw do
   get("/beans", { :controller => "beans", :action => "index" })
   
   get("/beans/:path_id", { :controller => "beans", :action => "show" })
+
+  get("/beans/analytics/:path_id", {:controller => "beans", :action => "analytics"})
   
   # UPDATE
   
