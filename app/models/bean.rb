@@ -13,8 +13,9 @@
 #  roaster_id        :integer
 #
 class Bean < ApplicationRecord
+  require "date"
   validates :name, :presence => true
-  validates :roast_date, numericality: {:less_than => :created_at, :message => "must be in the past."}
+  validates :roast_date, date: { before: Proc.new { Date.today } }
   belongs_to(:roaster)
   has_many(:brews, { :dependent => :destroy })
 end
