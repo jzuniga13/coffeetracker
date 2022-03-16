@@ -1,0 +1,125 @@
+<div>
+  <div>
+    <div class="display-4">
+      List of all beans
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new bean
+    </h2>
+
+    <form action="/insert_bean" method="post">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="roaster_name_box">Roaster</label>
+        </div>
+        <select class="form-control" id="roaster_name_box" name="query_roaster_name">
+          <option class="dropdown-item" value=""></option>
+          <% Roaster.all.each do |a_roast| %>
+            <option class="dropdown-item" ><%= a_roast.name %></option>
+          <% end %>
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-light" type="button" id="button-addon2"><a href="/roasters">Add new roaster</a></button>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="name_box">Bean Name</label>
+        </div>
+        <input class="form-control" type="text" id="name_box" name="query_name">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="country_of_origin_box">Country of origin</label>
+        </div>
+        <input class="form-control" type="text" id="country_of_origin_box" name="query_country_of_origin">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="roast_date_box">Roast date</label>
+        </div>
+        <input class="form-control" type="date" id="roast_date_box" name="query_roast_date">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="process_box">Process</label>
+        </div>
+        <input class="form-control" type="text" id="process_box" name="query_process">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="roast_level_box">Roast level</label>
+        </div>
+        <input class="form-control" type="text" id="roast_level_box" name="query_roast_level">
+      </div>
+
+      <button class="btn btn-primary">
+        Add bean
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table class="table table-responsive">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Roaster</th>
+
+          <th>Name</th>
+
+          <th>Country of origin</th>
+
+          <th>Roast date</th>
+
+          <th>Process</th>
+
+          <th>Roast level</th>
+
+          <th>
+          </th>
+
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list_of_beans.each do |a_bean| %>
+        <tr>
+          <td><%= a_bean.roaster.name %></td>
+
+          <td><%= a_bean.name %></td>
+
+          <td><%= a_bean.country_of_origin %></td>
+
+          <td><%= a_bean.roast_date.strftime("%m/%d/%Y") %></td>
+
+          <td><%= a_bean.process %></td>
+
+          <td><%= a_bean.roast_level %></td>
+
+          <td><a href="/beans/<%= a_bean.id %>">Show details</a></td>
+
+          <td><a href="/beans/analytics/<%= a_bean.id %>">Analytics</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>

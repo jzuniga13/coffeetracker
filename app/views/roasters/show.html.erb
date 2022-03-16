@@ -1,0 +1,81 @@
+<div>
+  <div>
+    <img class="img-fluid max-width: 100%" src="<%=@the_roaster.image%>" alt="">
+    
+    <div class="display-4">
+      <%= @the_roaster.name %> details
+    </div>
+
+    <div>
+      <div>
+        <button type="button" class="btn btn-link"><a href="/roasters">Go back</a></button>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-link"><a href="/delete_roaster/<%= @the_roaster.id %>">Delete roaster</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <form class="form-inline" action="/modify_roaster/<%= @the_roaster.id %>"  method="post" >
+      <div>
+        <label class="sr-only" for="name_box">Name</label>
+        <input class="form-control mb-3" type="text" id="name_box" name="query_name" value="<%= @the_roaster.name %>">
+      </div>
+
+      <button class="btn btn-primary mb-3">
+        Update name
+      </button>
+    </form>
+  </div>
+    <div>
+    <form class="form-inline" action="/modify_roaster_image/<%= @the_roaster.id %>"  method="post" >
+      <div>
+        <label class="sr-only" for="image_box">Image</label>
+        <input class="form-control mb-3" type="text" id="image_box" name="query_image_url" value="<%= @the_roaster.image %>">
+      </div>
+
+      <button class="btn btn-primary mb-3">
+        Upload image
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<h3>Beans from this roaster</h3>
+<div>
+    <table class="table table-responsive">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Roaster</th>
+
+          <th>Bean Name</th>
+
+          <th>Roast Date</th>
+
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @the_roaster.beans.each do |a_bean| %>
+        <tr>
+          <td><%= @the_roaster.name %></td>
+
+          <td><%= a_bean.name %></td>
+
+          <td><%= a_bean.roast_date.strftime("%m/%d/%Y") %></td>
+
+          <td><a href="/beans/<%= a_bean.id %>">Show details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

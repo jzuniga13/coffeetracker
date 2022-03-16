@@ -1,0 +1,110 @@
+<div>
+  <div>
+    <div class="display-4">
+      Your favorite brews
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <table class="table table-responsive">
+      <thead class="thead-dark">
+        <tr>
+
+          <th>
+            Bean
+          </th>
+
+          <th>
+            Roaster
+          </th>
+
+          <th>
+            Device
+          </th>
+
+          <th>
+            Grinder
+          </th>
+
+          <th>
+            Grind setting
+          </th>
+
+          <th>
+            Water Temp (C)
+          </th>
+          
+          <th>
+            Flavor Notes
+          </th>
+
+          <th>
+            Comments
+          </th>
+
+          <th>
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @list_of_favorite_brews.each do |a_favorite_brew| %>
+        <tr>
+
+          <td>
+            <%= a_favorite_brew.brew.bean.name %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.bean.roaster.name %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.device.device %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.grinder %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.grind_setting %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.water_temp %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.flavors %>
+          </td>
+
+          <td>
+            <%= a_favorite_brew.brew.comments %>
+          </td>
+
+          <td>
+            <a href="/brews/<%= a_favorite_brew.brew.id %>">
+              Show details
+            </a>
+          </td>
+
+          <td>
+            <a href="/delete_favorite_brew/<%= a_favorite_brew.id %>">
+              Delete Favorite
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>

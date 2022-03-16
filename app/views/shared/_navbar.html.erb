@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+  
+  <div class="container">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-brand" aria-controls="navbar-brand" aria-expanded="false" aria-label="Toggle navigation">
+      <a href="/"><span class="fas fa-coffee"></span></a>
+      
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="navbar-brand mb-0 h1" href="/">CoffeeTracker</a></li>
+        <li class="nav-item"><a class="nav-link" href="/favorite_brews">Favorite Brews</a></li>
+        <li class="nav-item"><a class="nav-link" href="/brews">All Brews</a></li>
+        <li class="nav-item"><a class="nav-link" href="/beans">Beans</a></li>
+        <li class="nav-item"><a class="nav-link" href="/roasters">Roasters</a></li>
+        <li class="nav-item"><a class="nav-link" href="/devices">Devices</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+      </ul>
+      <hr class="border-light">
+      <% if @current_user == nil %>
+        <div>
+          <a href="/user_sign_up">Sign Up</a>
+          <span class="text-white"> | </span>
+          <a href="/user_sign_in">Sign In</a>
+        </div>
+      <% else %>
+        <div class="text-white">
+          You are logged in as <%= @current_user.full_name%> | 
+          <a href="/user_sign_out">Sign Out</a>
+        </div>
+      <% end %>
+
+    </div> <!-- .navbar-collapse -->
+
+
+
+  </div> <!-- .container -->
+</nav>

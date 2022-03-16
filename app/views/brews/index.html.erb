@@ -1,0 +1,95 @@
+<div>
+  <div>
+    <div class="display-4">
+      List of all your brews
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <table class="table table-responsive">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Brew Date</th>
+
+          <th scope="col">Bean</th>
+
+          <th scope="col">Roaster</th>
+
+          <th scope="col">Device</th>
+
+          <th scope="col">Grinder</th>
+
+          <th scope="col">Grind Setting</th>
+
+          <th scope="col">Coffee Weight (g)</th>
+
+          <th scope="col">Water Temp (&deg;C)</th>
+          
+          <th scope="col">Flavor Notes</th>
+
+          <th scope="col">Comments</th>
+
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @list_of_brews.each do |a_brew| %>
+        <tr>
+          <td>
+            <%= a_brew.created_at.strftime("%m/%d/%Y") %>
+          </td>
+
+          <td>
+            <%= a_brew.bean.name %>
+          </td>
+
+          <td>
+            <%= a_brew.bean.roaster.name %>
+          </td>
+
+          <td>
+            <%= a_brew.device.device %>
+          </td>
+
+          <td>
+            <%= a_brew.grinder %>
+          </td>
+
+          <td>
+            <%= a_brew.grind_setting %>
+          </td>
+
+          <td>
+            <%= a_brew.coffee_weight %>
+          </td>
+
+          <td>
+            <%= a_brew.water_temp %>
+          </td>
+
+          <td>
+            <%= a_brew.flavors %>
+          </td>
+
+          <td>
+            <%= a_brew.comments %>
+          </td>
+
+          <td>
+            <a href="/brews/<%= a_brew.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>

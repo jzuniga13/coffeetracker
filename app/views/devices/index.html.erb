@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <div class="display-4">
+      List of all devices
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new device
+    </h2>
+
+    <form action="/insert_device" method="post">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="device_box">Device Name</label>
+        </div>
+        <input class="form-control" type="text" id="device_box" name="query_device">
+      </div>
+
+      <button class="btn btn-primary">
+        Add device
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table class="table table-responsive">
+      <thead class="thead-dark">  
+        <tr>
+          <th>Device</th>
+
+          <th class="text-center">Number of brews</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @list_of_devices.each do |a_device| %>
+        <tr>
+          <td><%= a_device.device %></td>
+
+          <td class="text-center"><%=a_device.brews.count%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,38 @@
+<div class="display-4 mb-3">Sign up</div>
+
+<h3>Welcome to CoffeeTracker! Please create an account and let's get brewing.</h3>
+
+<hr>
+
+<form action="/insert_user" method="post">
+
+  <div>
+    <input id="email_box" name="query_email" placeholder="Email" type="text">
+  </div>
+                 
+  <div>
+    <input type="text" id="first_name_box" name="query_first_name" placeholder="First Name">
+  </div>
+         
+  <div>
+    <input type="text" id="last_name_box" name="query_last_name" placeholder="Last Name">
+  </div>
+    
+  <div>
+    <input id="password_box" name="query_password" placeholder="Password" type="password">
+  </div>
+
+  <div>
+    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password" type="password">
+  </div>
+
+  <button class="btn btn-primary">
+    Sign up
+  </button>
+</form>
+
+<hr>
+
+<p>
+  Already have an account? <a href="/user_sign_in">Sign in</a> instead.
+</p>

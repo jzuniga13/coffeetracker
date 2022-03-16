@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Device #<%= @the_device.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/devices">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_device/<%= @the_device.id %>">
+          Delete device
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Device
+      </dt>
+      <dd>
+        <%= @the_device.device %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_device.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_device.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit device
+    </h2>
+
+    <form action="/modify_device/<%= @the_device.id %>"  method="post" >
+      <div>
+        <label for="device_box">
+          Device
+        </label>
+
+        <input type="text" id="device_box" name="query_device" value="<%= @the_device.device %>">
+      </div>
+
+      <button>
+        Update device
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

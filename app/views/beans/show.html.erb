@@ -1,0 +1,30 @@
+<div>
+  <div>
+    <div class="display-4">
+      <%= @the_bean.name%> details
+    </div>
+
+    <div>
+      <div>
+        <button type="button" class="btn btn-link"><a href="/beans">Go back</a></button>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-link"><a href="/delete_bean/<%= @the_bean.id %>">Delete bean</a></button>
+      </div>
+    </div>  
+  </div>
+</div>
+<hr>
+<div>
+  <ul class="list-group">
+    <li class="list-group-item"><span class="font-weight-bolder">Roaster </span><%=@the_bean.roaster.name%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Name </span><%=@the_bean.name%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Country of Origin </span><%=@the_bean.country_of_origin%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Roast Date </span><%=@the_bean.roast_date.strftime("%m/%d/%Y")%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Process </span><%=@the_bean.process%></li>
+    <li class="list-group-item"><span class="font-weight-bolder">Roast Level </span><%=@the_bean.roast_level%></li>
+  </ul>
+</div>
+
+<hr>

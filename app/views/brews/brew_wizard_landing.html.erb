@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <h1>
+      Let's get brewing!
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h4>
+      What are you using today?
+    </h4>
+
+    <form action="/insert_brew" method="post">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="device_name_box">Device</label>
+        </div>
+        <input class="form-control" type="text" id="device_name_box" name="query_device_name" value="<%=params.fetch("path_id")%>">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="bean_id_box">Bean</label>
+        </div>
+        <select class="form-control" id="bean_id_box" name="query_bean_name">
+          <option value="">Select a Bean</option>
+          <% Bean.order({ :roast_date => :desc }).each do |a_bean| %>
+            <option value="<%=a_bean.id%>"><%=a_bean.roaster.name%> <%= a_bean.name%> (<%=a_bean.roast_date.strftime("%m/%d/%Y")%>)</option>
+          <% end %>
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-light" type="button" id="button-addon2"><a href="/beans">Add new bean</a></button>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="grinder_box">Grinder</label>
+        </div>
+        <input class="form-control" type="text" id="grinder_box" name="query_grinder" placeholder="e.g. Niche Zero">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="grind_setting_box">Grind setting</label>
+        </div>
+        <input class="form-control" type="text" id="grind_setting_box" name="query_grind_setting" placeholder="e.g. 15">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="coffee_weight_box">Coffee Weight</label>
+        </div>
+        <input class="form-control" type="text" id="coffee_weight_box" name="query_coffee_weight" placeholder="e.g. 30">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="water_temp_box">Water temp</label>
+        </div>
+        <input class="form-control" type="text" id="water_temp_box" name="query_water_temp" placeholder="e.g. 92">
+      </div>
+
+      <button class="btn btn-primary">
+        Go to Brew Recipe
+      </button>
+    </form>
+  </div>
+</div>

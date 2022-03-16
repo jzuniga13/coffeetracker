@@ -1,0 +1,81 @@
+<div>
+  <h4>
+    Build your recipe here
+  </h4>
+</div>
+
+<div class="container">
+  <div>
+      
+      <% Instruction.where({:brew_id => params.fetch("path_id")}).each do |a_step| %>
+        <div class="row">
+          <h5 class="m-sm-1">Step <%=a_step.step_num%>: </h5>
+        
+          <form class="form-inline">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text font-weight-bolder">Action</span>
+              </div>
+              <input class="form-control" value="<%=a_step.action%>" readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text font-weight-bolder">End Weight (g)</span>
+              </div>
+              <input class="form-control" value="<%=a_step.weight%>" readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text font-weight-bolder">End Time (s)</span>
+              </div>
+              <input class="form-control" value="<%=a_step.time%>" readonly>
+            </div>
+          </form>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="row">
+    <h5 class="m-sm-1">Step <%=Instruction.where({:brew_id => params.fetch("path_id")}).count + 1 %>:</h5>
+    <form class="form-inline" action="/insert_instruction/<%=params.fetch("path_id")%>">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text font-weight-bolder" for="step_action_form">Action</label>
+        </div>
+        <select class="custom-select" id="step_action_form" name="query_step_action">
+          <option selected></option>
+          <option value="Pour">Pour</option>
+          <option value="Wait">Wait</option>
+          <option value="Bloom">Bloom</option>
+          <option value="Swirl">Swirl</option>
+          <option value="Swirl">Press</option>
+          <option value="Pre-Infusion">Pre-Infusion</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text font-weight-bolder" id="step_weight_form">End Weight (g)</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="step_weight_form" name="query_step_weight">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text font-weight-bolder" id="step_time_form">End Time (m:ss)</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="step_time_form" name="query_step_time">
+      </div>
+
+      <button type="submit" class="btn btn-primary mb-3 font-weight-bolder">Add Step</button>
+    </form>
+  </div>
+</div>
+
+<form action="/insert_comments/<%=params.fetch("path_id")%>">
+  <button class="btn btn-success">
+    Complete Recipe
+  </button>
+</form>

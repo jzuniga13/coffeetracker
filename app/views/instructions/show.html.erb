@@ -1,0 +1,144 @@
+<div>
+  <div>
+    <h1>
+      Instruction #<%= @the_instruction.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/instructions">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_instruction/<%= @the_instruction.id %>">
+          Delete instruction
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Step 1 action
+      </dt>
+      <dd>
+        <%= @the_instruction.step_1_action %>
+      </dd>
+
+      <dt>
+        Step 1 weight
+      </dt>
+      <dd>
+        <%= @the_instruction.step_1_weight %>
+      </dd>
+
+      <dt>
+        Step 1 time
+      </dt>
+      <dd>
+        <%= @the_instruction.step_1_time %>
+      </dd>
+
+      <dt>
+        Step 2 action
+      </dt>
+      <dd>
+        <%= @the_instruction.step_2_action %>
+      </dd>
+
+      <dt>
+        Step 2 weight
+      </dt>
+      <dd>
+        <%= @the_instruction.step_2_weight %>
+      </dd>
+
+      <dt>
+        Step 2 time
+      </dt>
+      <dd>
+        <%= @the_instruction.step_2_time %>
+      </dd>
+
+      <dt>
+        Step 3 action
+      </dt>
+      <dd>
+        <%= @the_instruction.step_3_action %>
+      </dd>
+
+      <dt>
+        Step 3 weight
+      </dt>
+      <dd>
+        <%= @the_instruction.step_3_weight %>
+      </dd>
+
+      <dt>
+        Step 3 time
+      </dt>
+      <dd>
+        <%= @the_instruction.step_3_time %>
+      </dd>
+
+      <dt>
+        Step 4 action
+      </dt>
+      <dd>
+        <%= @the_instruction.step_4_action %>
+      </dd>
+
+      <dt>
+        Step 4 weight
+      </dt>
+      <dd>
+        <%= @the_instruction.step_4_weight %>
+      </dd>
+
+      <dt>
+        Step 4 time
+      </dt>
+      <dd>
+        <%= @the_instruction.step_4_time %>
+      </dd>
+
+      <dt>
+        Step 5 action
+      </dt>
+      <dd>
+        <%= @the_instruction.step_5_action %>
+      </dd>
+
+      <dt>
+        Step 5 weight
+      </dt>
+      <dd>
+        <%= @the_instruction.step_5_weight %>
+      </dd>
+
+      <dt>
+        Step 5 time
+      </dt>
+      <dd>
+        <%= @the_instruction.step_5_time %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_instruction.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_instruction.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
