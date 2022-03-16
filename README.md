@@ -1,6 +1,6 @@
 # JZ's Coffee Tracker
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jzuniga13/coffeetracker)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://jzuniga13-coffeetracker-wxll3u9dvvv.ws-us34.gitpod.io/)
 
 ## Standard Workflow
 
