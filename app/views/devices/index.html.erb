@@ -15,16 +15,15 @@
     </h2>
 
     <form action="/insert_device" method="post">
-      <div>
-        <label for="device_box">
-          Device Name
-        </label>
-
-        <input type="text" id="device_box" name="query_device">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="device_box">Device Name</label>
+        </div>
+        <input class="form-control" type="text" id="device_box" name="query_device">
       </div>
 
       <button class="btn btn-primary">
-        Create device
+        Add device
       </button>
     </form>
   </div>

@@ -15,40 +15,54 @@
     </h2>
 
     <form action="/insert_bean" method="post">
-      <div>
-        <label for="roaster_name_box">Roaster</label>
-        <select class="form-control-sm" id="roaster_name_box" name="query_roaster_name">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="roaster_name_box">Roaster</label>
+        </div>
+        <select class="form-control" id="roaster_name_box" name="query_roaster_name">
           <option class="dropdown-item" value=""></option>
           <% Roaster.all.each do |a_roast| %>
             <option class="dropdown-item" ><%= a_roast.name %></option>
           <% end %>
         </select>
-        <a href="/roasters">Add a new roaster</a>
+        <div class="input-group-append">
+          <button class="btn btn-light" type="button" id="button-addon2"><a href="/roasters">Add new roaster</a></button>
+        </div>
       </div>
 
-      <div>
-        <label for="name_box">Name</label>
-        <input type="text" id="name_box" name="query_name">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="name_box">Name</label>
+        </div>
+        <input class="form-control" type="text" id="name_box" name="query_name">
       </div>
 
-      <div>
-        <label for="country_of_origin_box">Country of origin</label>
-        <input type="text" id="country_of_origin_box" name="query_country_of_origin">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="country_of_origin_box">Country of origin</label>
+        </div>
+        <input class="form-control" type="text" id="country_of_origin_box" name="query_country_of_origin">
       </div>
 
-      <div>
-        <label for="roast_date_box">Roast date</label>
-        <input type="date" id="roast_date_box" name="query_roast_date">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="roast_date_box">Roast date</label>
+        </div>
+        <input class="form-control" type="date" id="roast_date_box" name="query_roast_date">
       </div>
 
-      <div>
-        <label for="process_box">Process</label>
-        <input type="text" id="process_box" name="query_process">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="process_box">Process</label>
+        </div>
+        <input class="form-control" type="text" id="process_box" name="query_process">
       </div>
 
-      <div>
-        <label for="roast_level_box">Roast level</label>
-        <input type="text" id="roast_level_box" name="query_roast_level">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="roast_level_box">Roast level</label>
+        </div>
+        <input class="form-control" type="text" id="roast_level_box" name="query_roast_level">
       </div>
 
       <button class="btn btn-primary">

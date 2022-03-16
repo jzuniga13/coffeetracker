@@ -6,9 +6,9 @@
 
 <div>
   <div class="container">
-    <div class="row p-sm-3">
+    <div class="row mb-3">
       <% Device.all.each do |dev| %>
-        <div class="m-sm-1">
+        <div class="mr-1">
           <form action="/brew_method/<%=dev.device%>">
             <button class="btn btn-primary">
               <%= dev.device %>
@@ -18,7 +18,7 @@
       <% end %>
     </div>
     
-    <div class="row p-sm-3">
+    <div class="row mb-3">
       <form action="/devices">
         <button class="btn btn-outline-primary">
           Add a new device
